@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="logo.png">
 <title>Canalla Steak · Brasa en Alcázar de San Juan</title>
 <meta name="description" content="Canalla Steak: barbacoa, carne a la brasa y cocina casera con alma venezolana en Alcázar de San Juan. Menú del día 20 €.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,7 +40,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,bor
 nav.solid{background:rgba(19,16,14,.88);backdrop-filter:blur(10px);border-color:var(--line)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
 .logo{font-family:var(--display);font-weight:900;font-size:26px;letter-spacing:.02em;text-transform:uppercase;line-height:1}
-.logo span{color:var(--ember)}
+.logo b{color:var(--ember)}
+.logo{display:inline-flex;align-items:center;gap:12px}
+.badge{display:block;border-radius:50%;overflow:hidden;background:#fff;flex:none}
+.badge img{width:100%;height:100%;object-fit:cover;transform:scale(var(--crop,1.2))}
+.logo .badge{width:44px;height:44px;box-shadow:0 0 0 2px var(--char),0 0 0 3.5px var(--ember)}
+.seal{position:absolute;right:max(16px,5vw);top:clamp(170px,30vh,300px);width:clamp(150px,19vw,270px);aspect-ratio:1;z-index:1}
+.seal .badge{position:absolute;inset:16%;transform:rotate(-8deg);transition:transform .6s cubic-bezier(.2,.8,.2,1);box-shadow:0 20px 40px -10px rgba(0,0,0,.6)}
+.seal:hover .badge{transform:rotate(4deg) scale(1.04)}
+.seal svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 22s linear infinite}
+.seal text{font-family:var(--mono);font-size:10.5px;letter-spacing:3.2px;text-transform:uppercase;fill:var(--ember-2)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.foot-brand .foot-word{font-size:clamp(64px,16vw,300px)}
+.foot-brand{display:flex;align-items:center;gap:clamp(16px,3vw,40px)}
+.foot-brand .badge{width:clamp(90px,16vw,220px);height:clamp(90px,16vw,220px);transform:rotate(-6deg)}
 .nav-links{display:flex;gap:28px}
 .nav-links a{opacity:.75;transition:opacity .2s}
 .nav-links a:hover{opacity:1;color:var(--ember-2)}
@@ -186,6 +200,7 @@ footer{padding:80px 0 32px;overflow:hidden}
 .rv{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
 .rv.in{opacity:1;transform:none}
 
+@media (max-width:1100px){.nav-links{display:none}}
 @media (max-width:900px){
   body{font-size:17px}
   .nav-links{display:none}
@@ -215,6 +230,8 @@ footer{padding:80px 0 32px;overflow:hidden}
   .callbar .btn:not(.hot){background:var(--char);color:var(--bone)}
   .callbar .btn:not(.hot):hover{background:var(--bone);color:var(--char)}
   footer{padding-bottom:100px}
+  .seal{width:112px;top:auto;bottom:118px;right:10px}
+  .logo .badge{width:36px;height:36px}
   .nav-in .btn{padding:10px 14px;font-size:12px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -227,7 +244,7 @@ footer{padding:80px 0 32px;overflow:hidden}
 
 <nav id="nav">
   <div class="wrap nav-in">
-    <a href="#top" class="logo">Canalla<span>.</span>Steak</a>
+    <a href="#top" class="logo" aria-label="Canalla Steak, inicio"><span class="badge"><img src="logo.png" alt="" width="243" height="240"></span><span>Canalla<b>.</b>Steak</span></a>
     <div class="nav-links mono">
       <a href="#menu">Menú del día</a>
       <a href="#carta">Carta</a>
@@ -242,6 +259,10 @@ footer{padding:80px 0 32px;overflow:hidden}
 <header class="hero" id="top">
   <div class="hero-bg" aria-hidden="true"><img referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Q4x-tTJnLL-RM5oIuZwic0zKAZX7OD0wEPNNkA-V0QG3nD8YoHTkSc_iiiVwKQqHDyKocb43ouRRdKkRwUZVQFu2eSRN0XPIkZqFalBstgvMqAdZg4GXlmkuuYTNI9rkGLGwGHEg8NalBQ=w1600" alt="" fetchpriority="high"></div>
   <canvas id="embers" aria-hidden="true"></canvas>
+  <a class="seal" href="#carta" aria-label="Ver la carta">
+    <svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="ring" d="M100,100 m-86,0 a86,86 0 1,1 172,0 a86,86 0 1,1 -172,0"/></defs><text><textPath href="#ring">Canalla Steak ✸ Brasa &amp; carne ✸ Alcázar de San Juan ✸</textPath></text></svg>
+    <span class="badge"><img src="logo.png" alt="Logo de Canalla Steak: vaca con gorra y gafas de sol" width="243" height="240"></span>
+  </a>
   <div class="wrap hero-top">
     <span class="mono tag">Restaurante de barbacoa · Alcázar de San Juan</span>
     <span class="mono" style="color:var(--bone-dim)">Av. Cervera, 87 — Ciudad Real</span>
@@ -425,7 +446,7 @@ footer{padding:80px 0 32px;overflow:hidden}
 
 <footer>
   <div class="wrap">
-    <div class="foot-word">Canalla<span>.</span></div>
+    <div class="foot-brand"><span class="badge"><img src="logo.png" alt="Logo de Canalla Steak" width="243" height="240" loading="lazy"></span><div class="foot-word">Canalla<span>.</span></div></div>
     <div class="foot-row mono">
       <span>Canalla Steak · Barbacoa & cocina casera</span>
       <span>Av. Cervera, 87 · Alcázar de San Juan</span>
